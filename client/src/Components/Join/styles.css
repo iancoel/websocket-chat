@@ -1,0 +1,8 @@
+.inputContainer {
+  background: #F1F1F1;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
