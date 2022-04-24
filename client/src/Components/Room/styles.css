@@ -4,13 +4,13 @@
 	display: flex;
 	flex-direction: column;
   background: #f1f1f1;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
+	border-radius: 5px;
 }
 
 .chat-body {
   height: 100%;
   overflow-y: auto;
-  background: red;
 }
 
 .messages {

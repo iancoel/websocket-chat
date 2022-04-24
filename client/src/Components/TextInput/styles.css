@@ -1,0 +1,37 @@
+.inputContainer {
+  background: #F1F1F1;
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  max-width: 400px;
+  margin: 20px 0 10px;
+}
+
+.namer input {
+  border: 0;
+  border-bottom: 2px solid salmon;
+  width: 100%;
+  font-size: 1.25rem;
+  line-height: 35px;
+  height: 30px;
+  text-align: center;
+  background: transparent;
+  color: salmon;
+  outline: none;
+}
+
+.namer button {
+  background-color: salmon;
+  border: 1px solid salmon;
+  border-radius: 5px;
+  padding: 3px;
+  margin-left: 15px;
+}
+
+.namer button:hover {
+  background-color: transparent;
+  transition: .2s;
+}

@@ -1,0 +1,8 @@
+.message-container {
+	width: fit-content;
+	height: fit-content;
+	background-color: salmon;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 3px;
+}

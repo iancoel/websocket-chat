@@ -1,7 +1,10 @@
 import React from 'react'
+import './styles.css'
 
-export default function Message() {
+export default function Message({content}) {
   return (
-    <p>This is the message</p>
+    <span className="message-container">
+      <span className="message">{content}</span>
+    </span>
   )
 }
