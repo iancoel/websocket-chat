@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles.css'
 
 import Message from '../Message'
-import TextInput from '../TextInput'
 
-export default function Room() {
-  const messages = ['mensagem 1', 'teste', 'outro teste']
+export default function Room({socket, nickname}) {
+  const [messageContent, setMessageContent] = useState('');
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    socket.on('allMessages', (newAllMessages) => {
+      setMessages(newAllMessages)
+    })
+  }, [socket])
+
+  const handleMessageSubmit = (e) => {
+    e.preventDefault();
+    socket.emit('message', { messageContent, nickname, id: socket.id });
+    setMessageContent('');
+  };
+
 
   return (
     <>
@@ -15,12 +28,16 @@ export default function Room() {
         <div className="chat-body">
           <div className="messages">
             <div className="messages-list">
-              {messages.map(message => <Message content={message} />)}
+              {messages.map((message, index) => <Message key={index} content={message.messageContent} sessionUserMessage={message.id === socket.id} />)}
             </div>
           </div>
         </div>
 
-        <TextInput/>
+        <form className='inputContainer namer'>
+          <label htmlFor="messageContent"></label>
+          <input type="text" name="messageContent" id="messageContent" value={messageContent} onChange={(e) => setMessageContent(e.target.value)}/>
+          <button onClick={handleMessageSubmit} type="submit">Send</button>
+        </form>
       </div>
     </>
   )
