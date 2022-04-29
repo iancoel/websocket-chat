@@ -3,6 +3,8 @@ const { createServer } = require("http");
 const { Server } = require("socket.io");
 const cors = require("cors");
 
+const db = require('./database/db')
+
 const PORT = 3001;
 
 const app = express();
@@ -10,6 +12,11 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, { cors: { origin: "http://localhost:3000" } });
 
 app.use(cors());
+
+db
+.sync()
+// .then(() => console.log(`Database connected: ${process.env.DB_NAME}`));
+.then({ force: true} );
 
 let allMessages = [];
 
