@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../database/models/User');
 
 async function findAll(req, res) {
@@ -13,15 +14,23 @@ async function findUser(req,res) {
 };
 
 async function addUser(req, res) {
-  const newUser = {
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-  };
+  try {
+    //Hashing password
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-  User
-  .create(newUser)
-  .then(result => res.json(result));
+    //Inserting in db
+    const newUser = {
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+    };
+
+    User
+    .create(newUser)
+    .then(result => res.json(result));    
+  } catch {
+    res.status(500).send();
+  }
 };
 
 async function updateUser(req, res) {
