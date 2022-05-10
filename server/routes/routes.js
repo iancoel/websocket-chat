@@ -9,4 +9,4 @@ routes.get('/users/:id', users.findUser);
 routes.put('/users/:id', users.updateUser);
 routes.delete('/users/:id', users.deleteUser);
 
-module.exports = routes
+module.exports = routes;
