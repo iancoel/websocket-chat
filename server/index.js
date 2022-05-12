@@ -10,14 +10,15 @@ const PORT = 3001;
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors: { origin: 'http://localhost:3000' } });
+const io = new Server(httpServer, {
+  cors: { origin: 'http://localhost:3000' },
+});
 
 //  CORS
 app.use(cors());
 
 //  DATABASE
-db
-  .sync()
+db.sync()
   // .then(() => console.log(`Database connected: ${process.env.DB_NAME}`));
   .then({ force: true });
 
