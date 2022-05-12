@@ -1,13 +1,13 @@
 .message-container {
-	width: fit-content;
-	height: fit-content;
-	background-color: salmon;
-	border-radius: 5px;
-	padding: 5px;
-	margin: 3px;
+  width: fit-content;
+  height: fit-content;
+  background-color: salmon;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 3px;
 }
 
 .align-right {
-	align-self: end;
-	background-color: MediumTurquoise;
+  align-self: end;
+  background-color: MediumTurquoise;
 }
